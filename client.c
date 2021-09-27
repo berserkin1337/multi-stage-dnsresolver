@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
   }
   bzero(&servaddr, sizeof(servaddr));
   servaddr.sin_family = AF_INET;
-  servaddr.sin_port = atoi(argv[2]);
+  servaddr.sin_port = htons(atoi(argv[2]));
   if ((inet_pton(AF_INET, argv[1], &servaddr.sin_addr)) <= 0) {
     err_n_die("inet_pton error");
   }
@@ -51,8 +51,9 @@ int main(int argc, char **argv) {
     printf("%s", recvline);
     memset(recvline, 0, MAXLINE);
   }
-  if (n < 0) {
-    err_n_die("read error");
-  }
+  printf("\n");
+  /* if (n < 0) { */
+  /*   err_n_die("read error"); */
+  /* } */
   exit(0);
 }
