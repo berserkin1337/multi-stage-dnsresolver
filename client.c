@@ -16,16 +16,16 @@ int main(int argc, char **argv) {
   if (argc != 3) {
     err_n_die("usage: %s <Server address> <Server port>", argv[0]);
   }
-  if ((sockfd = socket(AF_INET, SOCK_STREAM, 0) < 0)) {
+  if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
     err_n_die("Error While creating socket");
   }
   bzero(&servaddr, sizeof(servaddr));
-  servaddr.sin_family = SOCK_STREAM;
+  servaddr.sin_family = AF_INET;
   servaddr.sin_port = atoi(argv[2]);
-  if (inet_pton(AF_INET, argv[1], &servaddr.sin_addr) <= 0) {
+  if ((inet_pton(AF_INET, argv[1], &servaddr.sin_addr)) <= 0) {
     err_n_die("inet_pton error");
   }
-  if (connect(sockfd, (SA *)&servaddr, sizeof(servaddr))) {
+  if ((connect(sockfd, (SA *)&servaddr, sizeof(servaddr))) < 0) {
     err_n_die("connect failed");
   }
   printf("Enter the type of request Message 1 or 2 ");

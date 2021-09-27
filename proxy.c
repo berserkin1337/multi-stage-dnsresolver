@@ -14,17 +14,15 @@ int main(int argc, char *argv[]) {
   char servrecvline[MAXLINE + 1];
   char *serverip;
   int serverport;
-  if (argc != 2) {
-    err_n_die("usage: ./%s <port>", argv[0]);
+  if (argc != 4) {
+    err_n_die("usage: %s <port> <server-ip> <server-port>", argv[0]);
   }
-  printf("Please Enter the dns server's ip address");
-  scanf("%s", serverip);
-  printf("Please enter server's port");
-  scanf("%d", &serverport);
+  serverip = argv[2];
+  serverport = atoi(argv[3]);
   bzero(&servaddr, sizeof(servaddr));
   servaddr.sin_family = AF_INET;
-  servaddr.sin_port = htons(atoi(argv[1]));
   servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
+  servaddr.sin_port = htons(atoi(argv[1]));
   if ((listenfd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
     err_n_die("socket error");
   if (bind(listenfd, (SA *)&servaddr, sizeof(servaddr)) < 0) {

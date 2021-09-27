@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
   uint8_t buff[MAXLINE + 1];
   uint8_t recvline[MAXLINE + 1];
   if (argc != 2) {
-    err_n_die("usage ./%s <port>", argv[0]);
+    err_n_die("usage %s <port>", argv[0]);
   }
   if ((listenfd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
     err_n_die("socket error.");
