@@ -11,10 +11,10 @@ int main(int argc, char **argv) {
   char domainname[MAXLINE];
   char ipaddr[MAXLINE];
   struct sockaddr_in servaddr;
-  char sendline[MAXLINE];
+  char sendline[MAXLINE + 10];
   char recvline[MAXLINE];
   if (argc != 3) {
-    err_n_die("usage: ./%s <Server address> <Server port>", argv[0]);
+    err_n_die("usage: %s <Server address> <Server port>", argv[0]);
   }
   if ((sockfd = socket(AF_INET, SOCK_STREAM, 0) < 0)) {
     err_n_die("Error While creating socket");
