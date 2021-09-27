@@ -1,12 +1,13 @@
 
-#ifndef _COMMON_H_
-#define _COMMON_H_
+#ifndef _HELPER_H_
+#define _HELPER_H_
 #include <arpa/inet.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <netdb.h>
 #include <signal.h>
 #include <stdarg.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

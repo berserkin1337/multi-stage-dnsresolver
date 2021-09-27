@@ -33,12 +33,12 @@ int main(int argc, char **argv) {
   if (reqtype == 1) {
     printf("Enter the domain Name of the website");
     scanf("%s", domainname);
-    sprintf(sendline, "1 %s", domainname);
+    sprintf(sendline, "1 %s\n", domainname);
     sendbytes = sizeof(sendline);
   } else if (reqtype == 2) {
     printf("Enter the ip address of the website");
     scanf("%s", ipaddr);
-    sprintf(sendline, "2 %s", ipaddr);
+    sprintf(sendline, "2 %s\n", ipaddr);
     sendbytes = sizeof(sendline);
   } else {
     err_n_die("Incorrect request type");
