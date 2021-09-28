@@ -4,11 +4,6 @@
 void sendAndReceive(char *message, char *serverip, int serverport,
                     char *servrecvline);
 
-void print_hex(const char *s) {
-  while (*s)
-    printf("%02x", (unsigned int)*s++);
-  fflush(stdout);
-}
 int main(int argc, char *argv[]) {
   char *cache[][2] = {{"0", "0"}, {"0", "0"}, {"0", "0"}};
   int index = 0;
@@ -68,12 +63,10 @@ int main(int argc, char *argv[]) {
     if (receivemsg[0] == '1') {
       /* printf("h1"); */
       for (int k = 0; k < 3; ++k) {
-        print_hex(cache[i][0]);
-        print_hex(stuff);
-        if (strcmp(cache[i][0], stuff) == 0) {
+        if (strcmp(cache[k][0], stuff) == 0) {
 
           cached = true;
-          strcpy((char *)buff, cache[i][1]);
+          strcpy((char *)buff, cache[k][1]);
           write(connfd, buff, sizeof(buff));
           close(connfd);
         }
@@ -99,8 +92,8 @@ int main(int argc, char *argv[]) {
       /* printf("h3"); */
       fflush(stdout);
       for (int k = 0; k < 3; ++k) {
-        print_hex(cache[i][0]);
-        print_hex(stuff);
+        // print_hex(cache[i][0]);
+        // print_hex(stuff);
         printf("%d", k);
         fflush(stdout);
         if (strcmp(cache[i][1], stuff) == 0) {
